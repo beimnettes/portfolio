@@ -1,26 +1,189 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+
+  /* Feminine Color Palette - Enhanced Visibility */
+  --background: #FFF5F7;
+  /* Soft pink-tinted white */
+  --foreground: #2d2d2d;
+  /* Darker for better readability */
+  --card: rgba(255, 255, 255, 0.8);
+  /* Glassmorphism with more opacity */
+  --card-foreground: #2d2d2d;
+  --popover: rgba(255, 255, 255, 0.98);
+  --popover-foreground: #2d2d2d;
+
+  /* Primary: Vibrant rose pink */
+  --primary: #FF69B4;
+  /* Hot pink for more pop */
+  --primary-foreground: #ffffff;
+
+  /* Secondary: Rich lavender */
+  --secondary: #DDA0DD;
+  /* Plum/orchid for more vibrancy */
+  --secondary-foreground: #2d2d2d;
+
+  /* Accent: Soft coral pink */
+  --accent: #FFB6C1;
+  /* Light pink */
+  --accent-foreground: #2d2d2d;
+
+  --muted: #FFF0F5;
+  /* Lavender blush */
+  --muted-foreground: #4d4d4d;
+  /* Darker for better contrast */
+  --destructive: #dc2626;
+  --border: rgba(255, 105, 180, 0.25);
+  /* Hot pink border */
+  --input: rgba(255, 105, 180, 0.15);
+  --ring: #FF69B4;
+
+  /* Charts - Vibrant girly colors */
+  --chart-1: #FF69B4;
+  /* Hot pink */
+  --chart-2: #DDA0DD;
+  /* Plum */
+  --chart-3: #FFB6C1;
+  /* Light pink */
+  --chart-4: #FF1493;
+  /* Deep pink */
+  --chart-5: #DA70D6;
+  /* Orchid */
+
+  --sidebar: rgba(255, 255, 255, 0.85);
+  --sidebar-foreground: #2d2d2d;
+  --sidebar-primary: #FF69B4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #DDA0DD;
+  --sidebar-accent-foreground: #2d2d2d;
+  --sidebar-border: rgba(255, 105, 180, 0.25);
+  --sidebar-ring: #FF69B4;
+}
+
+.dark {
+  --background: #1a0f1f;
+  /* Deep purple-black */
+  --foreground: #faf6fb;
+  --card: rgba(43, 24, 51, 0.7);
+  /* Deep plum with glass effect */
+  --card-foreground: #faf6fb;
+  --popover: rgba(43, 24, 51, 0.95);
+  --popover-foreground: #faf6fb;
+  --primary: #C8A2C8;
+  /* Lilac */
+  --primary-foreground: #1a0f1f;
+  --secondary: #6B3E6B;
+  /* Deep plum */
+  --secondary-foreground: #faf6fb;
+  --accent: #D8BFD8;
+  /* Light lavender */
+  --accent-foreground: #1a0f1f;
+  --muted: #2b1833;
+  --muted-foreground: #b19cd9;
+  --destructive: #ef4444;
+  --border: rgba(200, 162, 200, 0.2);
+  --input: rgba(200, 162, 200, 0.15);
+  --ring: #8B4789;
+  --chart-1: #C8A2C8;
+  --chart-2: #D8BFD8;
+  --chart-3: #FFB5C0;
+  --chart-4: #B19CD9;
+  --chart-5: #E0BBE4;
+  --sidebar: rgba(43, 24, 51, 0.7);
+  --sidebar-foreground: #faf6fb;
+  --sidebar-primary: #C8A2C8;
+  --sidebar-primary-foreground: #1a0f1f;
+  --sidebar-accent: #6B3E6B;
+  --sidebar-accent-foreground: #faf6fb;
+  --sidebar-border: rgba(200, 162, 200, 0.2);
+  --sidebar-ring: #8B4789;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(107, 62, 107, 0.1);
+  border: 1px solid rgba(200, 162, 200, 0.2);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom gradients - Vibrant and Girly */
+.gradient-pink-lavender {
+  background: linear-gradient(135deg, #FF69B4 0%, #DDA0DD 50%, #FFB6C1 100%);
+}
+
+.gradient-rose-gold {
+  background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 50%, #DA70D6 100%);
+}
+
+.dark .gradient-pink-lavender {
+  background: linear-gradient(135deg, #6B3E6B 0%, #8B4789 100%);
+}
+
+.dark .gradient-rose-gold {
+  background: linear-gradient(135deg, #8B4789 0%, #C8A2C8 100%);
 }
